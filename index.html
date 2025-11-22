@@ -1,48 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="logo">Aditya Patil</h1>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Movie App</title>
+  </head>
+  <body>
+    <header>
+      <form id="form">
+        <input type="text" id="search" class="search" placeholder="Search">
+      </form>
+    </header>
 
-  <main class="container">
-    <section class="hero">
-      <h2>Hello — I'm  Aditya Patil</h2>
-      <p>Web developer • Designer • Problem solver</p>
-      <a class="btn" href="about.html">Learn more</a>
-    </section>
+    <main id="main"></main>
 
-    <section class="projects">
-      <h3>Selected Projects</h3>
-      <ul>
-        <li>Project A — Travel Agency Landing Page</li>
-        <li>Project B — Restaurant Menu Website</li>
-        <li>Project C — Personal Portfolio Website</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> Aditya PAtil — <a href="mailto:you@example.com">adityapatil1050@gmail.com</a></p>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
+    <script src="index.js"></script>
+  </body>
 </html>
