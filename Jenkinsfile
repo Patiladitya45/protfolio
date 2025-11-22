@@ -4,29 +4,40 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // 'scm' means Jenkins will use the repo configured in the job
+                // Get code from the repo configured in the job
                 checkout scm
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Static site – nothing to build. You can add linters here.'
-                // Example: run HTML/CSS linters, if installed
-                // sh 'npm install'
-                // sh 'npm run build'
+                echo 'Static site – nothing to build.'
             }
         }
 
         stage('Deploy') {
-    steps {
-        sh '''
-            echo "Deploying portfolio to /var/www/html/portfolio"
-            mkdir -p /var/www/html/portfolio
-            cp -r * /var/www/html/portfolio
-        '''
+            steps {
+                // Windows commands using 'bat' instead of 'sh'
+                bat '''
+                    echo Deploying portfolio...
+
+                    rem === destination folder for the website ===
+                    set DEST=C:\\portfolio-deploy
+
+                    rem create folder if it does not exist
+                    if not exist "%DEST%" mkdir "%DEST%"
+
+                    rem optional: clear old files
+                    del /Q "%DEST%\\*" 2>nul
+
+                    rem copy all files from workspace to DEST
+                    xcopy "%WORKSPACE%\\*" "%DEST%\\" /E /I /Y
+
+                    echo Deployment finished to %DEST%
+                '''
+            }
+        }
     }
-}
 
     post {
         success {
