@@ -42,7 +42,7 @@ pipeline {
     
     post {
         success {
-            echo 'Pipeline finished successfully! Visit: http://localhost:8080/protfolio'
+            echo 'Pipeline finished successfully! Visit: http://localhost:8082/protfolio'
         }
         failure {
             echo 'Pipeline failed! Check build logs.'
