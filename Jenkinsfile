@@ -1,48 +1,45 @@
 pipeline {
     agent any
-
-    environment {
-        DEPLOY_DIR = 'C:\\inetpub\\wwwroot'   // IIS web root folder
-    }
-
+    
     stages {
         stage('Checkout') {
             steps {
-                echo 'Cloning project from GitHub...'
-                git branch: 'main', url: 'https://github.com/Patiladitya45/protfolio.git'
+                // Get code from the repo configured in the job
+                checkout scm
             }
         }
-
+        
         stage('Build') {
             steps {
-                echo 'Build Step: Check files in workspace'
-                bat 'dir'
+                echo 'Static site – nothing to build.'
             }
         }
-
+        
         stage('Deploy') {
             steps {
-                echo "Deploying Home.html to IIS folder"
-
-                // Directly copy Home.html to webserver root
-                bat "xcopy /Y Home.html ${DEPLOY_DIR}\\"
-            }
-        }
-
-        stage('Run HTTP Server (Optional Test)') {
-            steps {
-                echo 'Skipping HTTP server (use IIS instead)'
-                // For testing, you can use: bat 'python -m http.server 8000'
+                // Windows commands using 'bat' instead of 'sh'
+                bat '''
+                    echo Deploying portfolio...
+                    rem === destination folder for the website ===
+                    set DEST=C:\\inetpub\\wwwroot\\portfolio
+                    rem create folder if it does not exist
+                    if not exist "%DEST%" mkdir "%DEST%"
+                    rem optional: clear old files (suppressing error output)
+                    if exist "%DEST%\\*" del /Q "%DEST%\\*"
+                    rem copy all files from workspace to DEST
+                    xcopy "%WORKSPACE%\\*" "%DEST%\\" /E /I /Y
+                    echo Deployment finished to %DEST%
+                '''
             }
         }
     }
-
+    
     post {
         success {
-            echo 'Pipeline finished successfully! Visit: http://localhost/protfolio.git'
+            echo 'Deployment completed successfully!'
         }
         failure {
-            echo 'Pipeline failed! Check build logs.'
+            echo 'Deployment failed.'
         }
     }
 }
