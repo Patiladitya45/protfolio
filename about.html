@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Your Name</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="avatar"></div>
+        <div>
+          <h1 class="logo">Aditya Patil</h1>
+          <p class="tagline">Frontend Developer • Web Designer</p>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="about-section">
+      <div class="about-grid">
+        <!-- Left column -->
+        <div>
+          <p class="section-label">About Me</p>
+          <h2>Hi, I’m Aditya Patil. I like turning ideas into clean web interfaces.</h2>
+          <p>
+            I’m a web development enthusiast who enjoys building simple, responsive websites.
+            I focus on writing clean HTML, organized CSS, and creating layouts that look good on any device.
+          </p>
+          <p>
+            Right now I’m improving my skills in modern frontend workflows, Git, and basic CI/CD tools like Jenkins.
+            I love learning by building small projects and improving them step by step.
+          </p>
+
+          <div class="info-cards">
+            <div class="info-card">
+              <h4>What I Do</h4>
+              <ul>
+                <li>Responsive static websites</li>
+                <li>Landing pages and portfolios</li>
+                <li>UI layouts with Flexbox & Grid</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h4>Currently Learning</h4>
+              <ul>
+                <li>JavaScript fundamentals</li>
+                <li>Basic animations</li>
+                <li>Deployment & pipelines</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column -->
+        <aside class="sidebar-card">
+          <h4>Skills</h4>
+          <div class="chip-column">
+            <span class="chip">HTML5</span>
+            <span class="chip">CSS3</span>
+            <span class="chip">Responsive Design</span>
+            <span class="chip">Git & GitHub</span>
+            <span class="chip">Basic Jenkins</span>
+          </div>
+
+          <hr class="divider" />
+
+          <h4>Quick Info</h4>
+          <ul class="about-list">
+            <li><strong>Location:</strong> Islampur</li>
+            <li><strong>Focus:</strong> Frontend / UI</li>
+            <li><strong>Available for:</strong> Internships & projects</li>
+          </ul>
+
+          <a class="btn full-width" href="mailto:you@example.com">Say Hello</a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Simple timeline / journey -->
+    <section class="timeline-section">
+      <div class="section-header">
+        <h3>My Journey</h3>
+        <p>A quick look at how I started with web development.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div class="timeline-content">
+            <h4>Started learning HTML & CSS</h4>
+            <p>Built my first simple web page and learned how the web works.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div class="timeline-content">
+            <h4>Created personal projects</h4>
+            <p>Portfolio, landing pages, and practice UIs to improve layout and design skills.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div class="timeline-content">
+            <h4>Exploring tools like Git & Jenkins</h4>
+            <p>Using version control and basic automation to deploy projects more professionally.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>adityapatil1050@gmail.com <span id="year2"></span> Aditya_patil</p>
+      <p class="footer-note">Let’s build something simple and beautiful.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year2').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
