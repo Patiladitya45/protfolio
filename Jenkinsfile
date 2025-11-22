@@ -19,16 +19,14 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                // Adjust this path to your web server root
-                sh '''
-                    echo "Deploying portfolio to /var/www/html/portfolio"
-                    mkdir -p /var/www/html/portfolio
-                    cp -r * /var/www/html/portfolio
-                '''
-            }
-        }
+    steps {
+        sh '''
+            echo "Deploying portfolio to /var/www/html/portfolio"
+            mkdir -p /var/www/html/portfolio
+            cp -r * /var/www/html/portfolio
+        '''
     }
+}
 
     post {
         success {
