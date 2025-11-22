@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Cloning project from GitHub...'
-                git branch: 'main', url: 'https://github.com/DipaliGhadage1904/Jenkin_with_HTML.git'
+                git branch: 'main', url: 'https://github.com/Patiladitya45/protfolio.git'
             }
         }
 
@@ -39,7 +39,7 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline finished successfully! Visit: http://localhost/Home.html'
+            echo 'Pipeline finished successfully! Visit: http://localhost/protfolio.git'
         }
         failure {
             echo 'Pipeline failed! Check build logs.'
