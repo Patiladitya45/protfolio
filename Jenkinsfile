@@ -22,7 +22,7 @@ pipeline {
                     echo Deploying portfolio...
 
                     rem === destination folder for the website ===
-                    set DEST=D:\Portfolio Website
+                    set DEST=D:\\PortfolioWebsite
 
                     rem create folder if it does not exist
                     if not exist "%DEST%" mkdir "%DEST%"
