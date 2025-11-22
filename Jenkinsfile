@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        DEPLOY_DIR = 'C:\\inetpub\\wwwroot'   // IIS web root folder
+        DEPLOY_DIR = 'C:\\inetpub\\wwwroot\\protfolio'   // Create subfolder for your project
     }
     
     stages {
@@ -21,28 +21,29 @@ pipeline {
         }
         
         stage('Deploy') {
-    steps {
-        echo 'Deploying all files to IIS folder'
-        bat """
-            if not exist "${DEPLOY_DIR}" mkdir "${DEPLOY_DIR}"
-            xcopy /Y /E /I Home.html "${DEPLOY_DIR}\\"
-            xcopy /Y /E /I about.html "${DEPLOY_DIR}\\" 2>nul
-            xcopy /Y /E /I style.css "${DEPLOY_DIR}\\" 2>nul
-        """
-    }
-}
+            steps {
+                echo 'Deploying all files to IIS folder'
+                bat """
+                    if not exist "${DEPLOY_DIR}" mkdir "${DEPLOY_DIR}"
+                    xcopy /Y /E /I *.html "${DEPLOY_DIR}\\"
+                    xcopy /Y /E /I *.css "${DEPLOY_DIR}\\"
+                    xcopy /Y /E /I *.js "${DEPLOY_DIR}\\" 2>nul
+                    echo Files deployed successfully
+                    dir "${DEPLOY_DIR}"
+                """
+            }
+        }
         
         stage('Run HTTP Server (Optional Test)') {
             steps {
                 echo 'Skipping HTTP server (use IIS instead)'
-                // For testing, you can use: bat 'python -m http.server 8000'
             }
         }
     }
     
     post {
         success {
-            echo 'Pipeline finished successfully! Visit: http://localhost:8082/protfolio'
+            echo 'Pipeline finished successfully! Visit: http://localhost/protfolio/index.html'
         }
         failure {
             echo 'Pipeline failed! Check build logs.'
